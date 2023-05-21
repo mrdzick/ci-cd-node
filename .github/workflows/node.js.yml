@@ -34,7 +34,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - run: |
+    - name: Install dependencies and run the test cases
+      run: |
         npm ci
         npm run migrate:generate-db -- --env test
         npm run migrate:generate-table -- --env test
@@ -43,5 +44,5 @@ jobs:
         DB_USERNAME_TEST: ${{ secrets.DB_USERNAME_TEST }}
         DB_PASSWORD_TEST: ${{ secrets.DB_PASSWORD_TEST }}
         DB_DATABASE_TEST: ${{ secrets.DB_DATABASE_TEST }}
-        DB_HOST_TEST: ${{ secrets.DB_HOST_TEST }}
+        DB_HOST_TEST: db
         DB_DIALECT: ${{ secrets.DB_DIALECT }}

@@ -22,7 +22,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -33,6 +33,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run migrate:generate-db
-    - run: npm run migrate:generate-table
+    - run: npm run migrate:generate-db -- --env test
+    - run: npm run migrate:generate-table -- --env test
     - run: npm test

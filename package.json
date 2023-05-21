@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest --setupFiles dotenv/config -i",
     "start:dev": "cross-env NODE_ENV=development node src/index.js",
-    "migrate:generate-db": "npx sequelize-cli db:create --env test",
-    "migrate:generate-table": "npx sequelize-cli db:migrate --env test",
+    "migrate:generate-db": "npx sequelize-cli db:create",
+    "migrate:generate-table": "npx sequelize-cli db:migrate",
     "start": "cross-env NODE_ENV=production node src/index.js"
   },
   "keywords": [],

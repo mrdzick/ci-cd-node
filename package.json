@@ -4,12 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --setupFiles dotenv/config -i",
+    "start:dev": "cross-env NODE_ENV=development node src/index.js",
+    "migrate:generate-db": "npx sequelize-cli db:create --env test",
+    "migrate:generate-table": "npx sequelize-cli db:migrate --env test",
+    "start": "cross-env NODE_ENV=production node src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.5.0"
+    "jest": "^29.5.0",
+    "sequelize-cli": "^6.6.0"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "pg": "^8.11.0",
+    "sequelize": "^6.31.1"
   }
 }

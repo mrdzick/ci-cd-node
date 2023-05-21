@@ -11,10 +11,7 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
-    container: node:latest
-
     services:
       db:
         image: postgres
@@ -45,6 +42,7 @@ jobs:
         npm run migrate:generate-table -- --env test
         npm test
       env:
+        CI: true
         DB_USERNAME_TEST: ${{ secrets.DB_USERNAME_TEST }}
         DB_PASSWORD_TEST: ${{ secrets.DB_PASSWORD_TEST }}
         DB_DATABASE_TEST: ${{ secrets.DB_DATABASE_TEST }}
